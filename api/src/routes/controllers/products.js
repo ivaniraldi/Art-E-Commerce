@@ -67,8 +67,8 @@ module.exports = {
             "released",
             "state",
           ],
-          limit: 3,
-          offset: page * 3,
+          limit: 20,
+          offset: page * 20,
           include: [
             {
               model: Category,

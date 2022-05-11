@@ -21,9 +21,14 @@ router.post(
 
 router.put(
   "/:idProduct",
-  passport.authenticate("jwt", { session: false }),
-  checkRoles("admin", "employed"),
+  // passport.authenticate("jwt", { session: false }),
+  // checkRoles("admin", "employed"),
   productController.put
+);
+router.delete("/:idProduct",
+  // passport.authenticate("jwt", { session: false }),
+  // checkRoles("admin", "employed"),
+  productController.delete
 );
 
 module.exports = router;

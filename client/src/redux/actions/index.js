@@ -271,6 +271,21 @@ export function searchPaintThatContains(search) {
     payload: search,
   };
 }
+export function deleteProduct(id) {
+  return function (dispatch) {
+    dispatch({ type: "DELETE_PRODUCT" });
+    Api.delete(`/product/${id}`)
+      .then(function (response) {
+        dispatch({
+          type: "DELETE_PRODUCT_SUCCESS",
+          payload: response.data,
+        });
+      })
+      .catch(function (err) {
+        dispatch({ type: "DELETE_PRODUCT_FAILURE", payload: err });
+      });
+  }
+}
 export function getCustomerById(id) {
   return function (dispatch) {
     dispatch({ type: "FETCH_CUSTOMER_BY_ID" });
@@ -440,3 +455,25 @@ export function resetTotalPages(page) {
     payload: page,
   };
 }
+export function updateProduct(id, data) {
+  return async function () {
+    try {
+      const result = await Api.put(`/product/${id}`, data);
+
+      toast.success("Producto Actualizado", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      return result.data;
+    } catch (error) {
+      return { status: false, message: error };
+    }
+  }
+}
+

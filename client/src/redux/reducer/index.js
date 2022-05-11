@@ -63,6 +63,13 @@ export default function rootReducer(state = initialState, action) {
         detail: action.payload,
         loading: false,
       };
+    case "DELETE_PAINT":
+      return {
+        ...state,
+        paints: state.paints.filter((paint) => paint.id_product !== action.payload),
+        filteredPaints: state.filteredPaints.filter((paint) => paint.id_product !== action.payload),
+        loading: false,
+      };
     case GET_ORDERS:
       return {
         ...state,

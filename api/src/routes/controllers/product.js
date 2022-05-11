@@ -88,9 +88,9 @@ module.exports= {
 
     put: async (req, res) => {
         const {idProduct}=req.params;
-        const {name, description, technique, measures, image, price, sku, released, categories, serie} = req.body;
+        const {name, description, technique, measures, image, price, sku, released, categories, serie, state} = req.body;
 
-        if(name && description && technique && measures && image && price && sku && released && categories.length && serie) {
+        if(name && description && technique && measures && image && price && sku && released && serie && state) {
             try {
 
                 const cateDb = categories.map(c => 
@@ -132,8 +132,26 @@ module.exports= {
                 console.log(error);
                 res.status(400).send('Bad request');
             }
+
         }else{
             res.status(400).send('Bad request missing parameters');
+        }
+    },
+    delete: async (req, res) => {
+        const {idProduct}=req.params;
+        if(idProduct && idProduct.includes('-')) {
+            try {
+                await Product.destroy({
+                    where: {
+                        id_product: idProduct,
+                    },
+                });
+                res.status(200).send('Product deleted');
+            } catch (error) {
+                res.status(404).send('Product not found');
+            }
+        }else{
+            res.status(400).send('Bad request');
         }
     }
 

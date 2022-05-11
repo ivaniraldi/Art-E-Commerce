@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteProduct,
   fetchPaints,
   filterState,
   searchAllThatContains,
@@ -9,6 +10,7 @@ import ModalPaint from "./ModalPaint";
 import NavAdmin from "./NavAdmin";
 import { getCategories } from "../../../redux/actions/index";
 import ProductModal from "../../../components/ProductModal/ProductModal";
+import { toast } from "react-toastify";
 
 export default function Pinturas() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -37,6 +39,24 @@ export default function Pinturas() {
 
   function handleState(e) {
     dispatch(filterState(e));
+  }
+
+  function deletePaint(id) {
+    toast.error('Eliminando pintura...', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+      
+    dispatch(deleteProduct(id));
+    //reload the react component
+    window.location.reload();
+
+    
   }
 
   return (
@@ -247,16 +267,45 @@ export default function Pinturas() {
                       )}
                     </td>
                     <td>
-                      <button>
-                        <img
+                      <button
+                        id={e.id_product}
+                        onClick={(e) => {
+                          setModalOpen({
+                            [index]: true,
+                          });
+                        }}
+                      >
+                               <img
                           src="https://i.ibb.co/g762MvW/update-arrow-svgrepo-com-1.png"
                           alt=""
                           style={{ width: "30px" }}
                         />
                       </button>
+                      {modalOpen[index] && (
+                        <ModalPaint
+                          name={e.name}
+                          img={e.image}
+                          cat={e.categories.map((e) => e.id_category + " " || e)}
+                          desc={e.description}
+                          idP={e.id_product}
+                          price={e.price}
+                          released={e.released}
+                          measures={e.measures}
+                          state={e.state}
+                          sku={e.sku}
+                          technique={e.technique}
+                          serie={e.serie}
+                          setOpenModal={setModalOpen}
+                        />
+                      )}
                     </td>
                     <td>
-                      <button>
+                      <button
+                        onClick={() => {
+                          deletePaint(e.id_product);
+                        }
+                        }
+                      >
                         <img
                           src="https://i.ibb.co/9bXyDbb/delete-svgrepo-com-1.png"
                           alt=""
