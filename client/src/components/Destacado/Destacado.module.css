@@ -24,10 +24,10 @@
 }
 
 .container {
-    background-image: url("../../assets/background-decora.png");
-    background-repeat: no-repeat;
+    /* background-image: url("../../assets/background-decora.png"); */
+    /* background-repeat: no-repeat;
     background-size: cover;
-    height: 573px;
+    height: 573px; */
 }
 
 .infoContainer p {

@@ -112,8 +112,8 @@ export default function Home() {
       />
       <Titulos titulo="Ilustramos tu personalidad"></Titulos>
       <Ilustrame></Ilustrame>
-      {/* <Titulos titulo="Comentarios"></Titulos> */}
-      {/* <Comments /> */}
+      <Titulos titulo="Comentarios"></Titulos>
+      <Comments />
       <Titulos titulo="Sobre mi"></Titulos>
       <About innerRef={about}></About>
       <Titulos></Titulos>

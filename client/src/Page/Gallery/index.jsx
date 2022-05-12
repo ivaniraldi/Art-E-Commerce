@@ -20,20 +20,7 @@ const Gallery = () => {
   const categories = useSelector((state) => state.categories);
   const [search, setSearch] = useState("");
   const paints = useSelector((state) => state.filteredPaints);
-  const [currentPage, setCurrentPage] = useState(0);
 
-  const scrollToEnd = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  window.onscroll = function () {
-    if (
-      window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
-    ) {
-      scrollToEnd();
-    }
-  };
 
   let filterAviablePaints = paints.filter(
     (paint) => paint.state === "Available"
@@ -42,17 +29,8 @@ const Gallery = () => {
   const [filter, setFilter] = useState(false);
 
   useEffect(() => {
-    if (currentPage !== 0 || paints.length === 0)
-      dispatch(fetchPaints(currentPage));
-  }, [currentPage]);
+      dispatch(fetchPaints());
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    dispatch(getCategories());
-
-    return () => {
-      dispatch(resetTotalPages(0));
-    };
   }, []);
 
   const handleChange = (e) => {
@@ -77,7 +55,7 @@ const Gallery = () => {
   return (
     <>
       <NavBar />
-      <div className={`text-white pt-24 ${s.container}`}>
+      <div className={`text-white pt-24`}>
         <h3 className="text-3xl border-b-2 inline-block ml-12">
           Galeria de obras:
         </h3>

@@ -70,6 +70,8 @@ function ProductModal({ openModalProduct, modalProduct }) {
     const result = await dispatch(createProduct(formImage, data));
     setLoading(false);
     reset();
+    openModalProduct(false);
+    window.location.reload();
   };
 
   return (

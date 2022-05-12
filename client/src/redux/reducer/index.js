@@ -47,9 +47,8 @@ export default function rootReducer(state = initialState, action) {
     case "FETCH_PAINTS_SUCCESS":
       return {
         ...state,
-        paints: state.paints.concat(action.payload.content),
-        filteredPaints: state.filteredPaints.concat(action.payload.content),
-        totalPages: action.payload.totalPages,
+        paints: action.payload,
+        filteredPaints: action.payload,
         loading: false,
       };
     case "FETCH_PAINTS_FAILURE":
@@ -176,14 +175,15 @@ export default function rootReducer(state = initialState, action) {
     case "SEARCH_ALL_THAT_CONTAINS":
       return {
         ...state,
-        filterCategories: [...state.categories].filter(
-          (category) =>
-            category.id_category
-              .toString()
-              .toLowerCase()
-              .includes(action.payload.toLowerCase()) ||
-            category.name.toLowerCase().includes(action.payload.toLowerCase())
+        filteredPaints: state.paints.filter((paint) =>
+          paint.name.toLowerCase().includes(action.payload.toLowerCase()) ||
+          paint.description.toLowerCase().includes(action.payload.toLowerCase()) ||
+          paint.price.toString().includes(action.payload.toLowerCase()) ||
+          paint.state.toLowerCase().includes(action.payload.toLowerCase()) ||
+          paint.sku.toLowerCase().includes(action.payload.toLowerCase()) ||
+          paint.released.toString().includes(action.payload.toString())
         ),
+
       };
     case "FILTER_STATE":
       if (action.payload === "All") {

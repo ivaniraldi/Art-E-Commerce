@@ -11,6 +11,7 @@ import { GoogleLogin } from "react-google-login";
 import "./style.scss";
 import { googlelogin } from "../../services/post/googleLogin";
 import { useLocalStorage } from "../../utils/customerHooks/useLocalStorage";
+import NavBar from "../../components/NavBar/NavBar";
 
 const PORT =
   //"395216086999-0eb8o2a0jcr870t9ndclcnik3fvt564e.apps.googleusercontent.com";
@@ -92,10 +93,9 @@ const Login = () => {
   }
 
   return (
+    <div>
+      <NavBar/>
     <div className="login">
-      <div className="header">
-        <Link to="/home">Gallery Art</Link>
-      </div>
       <div className="login__container">
         <form className="login__container__form" onSubmit={handleSubmit}>
           <div className="login__container__form__title">
@@ -127,7 +127,7 @@ const Login = () => {
                 width={"357px"}
                 height={"50px"}
               />
-              <Link to="/resetPasswordEmail">¿Te olvidas tu contraseña?</Link>
+              <Link to="/resetPasswordEmail">¿Olvidaste tu contraseña?</Link>
             </div>
             <GoogleLogin
               clientId={PORT}
@@ -145,6 +145,7 @@ const Login = () => {
           {/* <span>¿Olvidaste tu contraseña? </span>
           <Link to="/resetPasswordEmail">Oprime aqui</Link> */}
         </div>
+      </div>
       </div>
     </div>
   );

@@ -1,11 +1,9 @@
 require("dotenv").config;
 const { Product, Category } = require("../../db");
 const { Op } = require("sequelize");
-
 module.exports = {
   async get(req, res) {
     const pageAsNumber = Number.parseInt(req.query.page);
-
     let page = 0;
     if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
       page = pageAsNumber;
@@ -14,7 +12,6 @@ module.exports = {
       const getProducts = async (query) => {
         return await Product.findAndCountAll(query);
       };
-
       let query;
       if (req.query.name) {
         const { name } = req.query;
@@ -51,9 +48,6 @@ module.exports = {
         };
       } else {
         query = {
-          where: {
-            state: "Available",
-          },
           attributes: [
             "id_product",
             "serie",
@@ -82,7 +76,7 @@ module.exports = {
       }
       const products = await getProducts(query);
       res.send({
-        totalPages: Math.ceil(products.count / 3),
+        totalPages: Math.ceil(products.count / 5),
         content: products.rows,
       });
     } catch (err) {

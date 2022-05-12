@@ -10,6 +10,7 @@ import "./style.scss";
 import { toast } from "react-toastify";
 import { GoogleLogin } from "react-google-login";
 import { googlelogin } from "../../services/post/googleLogin";
+import NavBar from "../../components/NavBar/NavBar.jsx";
 
 const PORT =
   //"395216086999-0eb8o2a0jcr870t9ndclcnik3fvt564e.apps.googleusercontent.com";
@@ -128,10 +129,12 @@ const Registry = () => {
     return <Navigate to="/home" />;
   }
   return (
+    <div>
+    <NavBar></NavBar>
     <div className="registry">
-      <div className="header">
+      {/* <div className="header">
         <Link to="/home">Gallery Art</Link>
-      </div>
+      </div> */}
       <div className="registry__container">
         <form className="registry__container__form" onSubmit={handleSubmit}>
           <div className="registry__container__form__title">
@@ -163,7 +166,7 @@ const Registry = () => {
           </div>
           <div className="registry__container__form__buttons">
             <Button
-              name={"Ingresar"}
+              name={"Registrarme"}
               version={"v1"}
               type={"submit"}
               width={"357px"}
@@ -185,7 +188,8 @@ const Registry = () => {
           <Link to="/login">Inicia sesion aqui</Link>
         </div>
       </div>
-    </div>
+    
+      </div></div>
   );
 };
 

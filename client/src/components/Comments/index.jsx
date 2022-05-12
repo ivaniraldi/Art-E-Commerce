@@ -20,35 +20,35 @@ const Comments = () => {
       urlImage:
         "https://ca.slack-edge.com/TPRS7H4PN-U02TW5D3X0A-23a80e1eb599-512",
       description:
-        "Una pintura de muy buen gusto, me encanta la pintura de esta manera y la calidad de la pintura es muy buena",
+        "Pintura exelente, llego enperfectas condiciones y en tiempo.",
     },
     {
       id: 3,
       urlImage:
         "https://ca.slack-edge.com/TPRS7H4PN-U02KSNPV9B5-3a086a358c7a-512",
       description:
-        "Una pintura de muy buen gusto, me encanta la pintura de esta manera y la calidad de la pintura es muy buena",
+        "Recomiendo este artista, realmente es una pintura de gran calidad, espero que lo recomienden a todos los que lo vean",
     },
     {
       id: 4,
       urlImage:
         "https://ca.slack-edge.com/TPRS7H4PN-U02SV8W6TNH-94641d94cbbd-512",
       description:
-        "Una pintura de muy buen gusto, me encanta la pintura de esta manera y la calidad de la pintura es muy buena",
+        "El envio fue muy rápido, la pintura es de gran calidad y el envio es rápido, recomiendo a todos",
     },
     {
       id: 5,
       urlImage:
         "https://ca.slack-edge.com/TPRS7H4PN-U025V0ZBUBA-57f96b66c75d-512",
       description:
-        "Una pintura de muy buen gusto, me encanta la pintura de esta manera y la calidad de la pintura es muy buena",
+        "Colgue este cuadro en mi casa, es una pintura de gran calidad, recomiendo a todos",
     },
     {
       id: 6,
       urlImage:
         "https://ca.slack-edge.com/TPRS7H4PN-U02SY7RC7RR-9df6ad237ddb-512",
       description:
-        "Una pintura de muy buen gusto, me encanta la pintura de esta manera y la calidad de la pintura es muy buena",
+        "Recientemente adquiri una obra de este artista, es una pintura de gran calidad, recomiendo a todos los que quieran comprar",
     },
   ];
   const dispatch = useDispatch();
@@ -61,6 +61,8 @@ const Comments = () => {
         paddingTop: "50px",
         marginBottom: "100px",
         position: "relative",
+        display: "flex",
+        
       }}
     >
       <div
@@ -76,7 +78,7 @@ const Comments = () => {
             >
               <div
                 style={{ width: "300px", height: "300px" }}
-                className="border-8 border-blue-600  flex flex-wrap content-center items-center rounded-full overflow-hidden bg-white"
+                className="border-8 border-gray-800  flex flex-wrap content-center items-center rounded-full overflow-hidden bg-white"
               >
                 <img
                   src={item.urlImage}
@@ -84,6 +86,7 @@ const Comments = () => {
                   style={{ height: "300px", width: "auto" }}
                 />
               </div>
+              <p></p>
               <p className="text-base my-10 w-60 font-mulish text-center text-white">
                 {item.description}
               </p>
@@ -91,13 +94,13 @@ const Comments = () => {
           );
         })}
       </div>
-      <Link
+      {/* <Link
         to="/comentarios"
         style={{ width: "180px", height: "35px", bottom: "-10%", left: "10%" }}
         className=" absolute  bg-white h-8 p-2 rounded-lg mt-5"
       >
         Ver Mas Comentarios
-      </Link>
+      </Link> */}
     </div>
   );
 };

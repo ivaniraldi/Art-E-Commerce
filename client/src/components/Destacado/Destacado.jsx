@@ -71,6 +71,10 @@ export default function Destacado({ cards }) {
               className=" rounded-md sm:rounded-xl shadow-x2"
               src={Destacado?.image}
               alt="No se encontró una imagen"
+              style={{
+                border: "4px solid #2b2b2bef",
+                boxShadow: "0px 0px 10px #2b2b2bef",
+              }}
             />
           </div>
         </div>

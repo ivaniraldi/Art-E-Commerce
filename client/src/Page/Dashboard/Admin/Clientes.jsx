@@ -154,7 +154,7 @@ export default function Clientes() {
                     <td>{e.name + " " + e.lastName}</td>
                     <td>{e.phone}</td>
                     <td>{e.email}</td>
-                    <td>{e.country + " " + e.billing_address}</td>
+                    <td>{(e.country + " - " + e.default_shipping_address) || "--"} </td>
                     <td>{e.role}</td>
                     <td>{e.status || "No status model"}</td>
                     <td>

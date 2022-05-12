@@ -69,11 +69,12 @@ export default function Admin() {
               fontSize: "20px",
             }}
           >
-            Hola USER es bueno verte
+            Hola Hugo, es bueno verte.
           </h1>
           <img src="https://i.ibb.co/tZPQrXZ/Group-75.png" alt="" />
         </div>
         <div className="box-border relative w-full max-w-md px-4 mt-10 mb-4  bg-no-repeat bg-contain border-solid md:mt-0 md:max-w-none lg:mb-0 md:w-1/2">
+          <div className="">
           <h1
             style={{
               marginBottom: "8px",
@@ -82,7 +83,7 @@ export default function Admin() {
               color: "white",
             }}
           >
-            Revisa tus pedidos pendientes de envio
+            Revisa tus pedidos pendientes de envio:
           </h1>
           <div
             style={{
@@ -189,6 +190,7 @@ export default function Admin() {
                   style={{
                     color: "white",
                     backgroundColor: "#4A4E69",
+                     borderRadius:"5px"
                   }}
                 >
                   <tr>
@@ -325,6 +327,7 @@ export default function Admin() {
               </table>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

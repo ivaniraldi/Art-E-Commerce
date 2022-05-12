@@ -43,14 +43,14 @@ export async function ResetPasswordEmailActions(email) {
     });
 }
 
-export function fetchPaints(currentPage) {
+export function fetchPaints() {
   return function (dispatch) {
     dispatch({ type: "FETCH_PAINTS" });
-    Api.get(`/products?page=${currentPage}`)
+    Api.get(`/products`)
       .then(function (response) {
         dispatch({
           type: "FETCH_PAINTS_SUCCESS",
-          payload: response.data,
+          payload: response.data.content,
         });
       })
       .catch(function (err) {
