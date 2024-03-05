@@ -32,14 +32,15 @@ export default function Admin() {
         return(customer?.name + " " + customer?.lastName) ;
     }*/
   
-  useEffect(async () => {
-    const orders = await dispatch(getOrdersForAdmin());
-
-    setOrders(orders);
-
-    dispatch(getCustomers());
-  }, [dispatch]);
-
+    useEffect(() => {
+      const fetchData = async () => {
+        const ordersData = await dispatch(getOrdersForAdmin());
+        setOrders(ordersData);
+        dispatch(getCustomers());
+      };
+    
+      fetchData();
+    }, [dispatch]);
   //Function to get today's date seccionated
   const today = new Date();
   const mm = String(today.getMonth() + 1).padStart(2, "0");

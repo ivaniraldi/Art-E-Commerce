@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getComments } from "../../redux/actions";
 
-import s from "./style.css";
+import s from "./style.module.css";
 
 const Comments = () => {
   const comments = useSelector((state) => state.comments);
